@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Login() {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +22,7 @@ export default function Home() {
                 <input type="text" id="psw" name="psw"></input>
             </div>
             <div>
-                <Link href="/register">
+                <Link href="/tests">
                   <button type="primary">login</button>
                 </Link>
             </div>
