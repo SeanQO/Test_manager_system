@@ -11,7 +11,7 @@ let state = {
 
 let handleChange = e =>{
   switch(e.target.name){
-    case "utype": state.type = e.target.value; 
+    case "type": state.type = e.target.value; 
       break;  
     
     case "uname": state.uname = e.target.value; 
@@ -32,8 +32,7 @@ let handleSubmit = async e => {
       },
       body: JSON.stringify(state)
   }
-
-  let r = await fetch ("http://localhost:3000/api/student/save",config)
+  let r = await fetch ('http://localhost:3000/api/saveUsers',config)
   console.log(r)
 }
 
@@ -49,9 +48,9 @@ export default function Register() {
       <main className={styles.main}>
         <form onSubmit={handleSubmit}>
             <div>
-                <input type="radio" id="tchr" name="utype" value="teacher" onClick={handleChange}></input>
+                <input type="radio" id="tchr" name="type" value="teacher"  onClick={handleChange}></input>
                 <label htmlFor="tchr">Teacher</label><br></br>
-                <input type="radio" id="stud" name="utype" value="student" onClick={handleChange}></input>
+                <input type="radio" id="stud" name="type" value="student" onClick={handleChange}></input>
                 <label htmlFor="stud">Student</label><br></br>
             </div>
             <div>
