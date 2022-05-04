@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Router from 'next/router'
 import styles from '../styles/Home.module.css'
+import { useRouter } from 'next/router'
 
 let state = {
   uname : "",
-  psw: ""
+  psw: "",
 }
 
 let handleChange = e =>{
@@ -27,10 +29,14 @@ let handleSubmit = async e => {
       },
       body: JSON.stringify(state)
   }
-
-  let r = await fetch ("http://localhost:3000/login",config)
-
-  console.log(r);
+  console.log(config);
+  let r = await fetch ("http://localhost:3000/api/validate",config)
+  let jsonresponse = await r.json();
+  console.log("JSON RESPONSE: " + jsonresponse);
+  if(jsonresponse.uname != ""){
+    Router.redirect('http://localhost:3000/test')
+  }
+  
 }
 
 export default function Login() {

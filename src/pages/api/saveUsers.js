@@ -4,8 +4,11 @@ export default async function handler(req,res){
     const {method , body} = req;
         if (method === "POST"){
             console.log(req)
+
+            const {uname, psw, type} = body
+
             try {
-                let response = await db.query('INSERT INTO USERS (Username, Password, Type) VALUES ($1,$2,$3)',[body.uname, body.psw, body.type])
+                let response = await db.query('INSERT INTO USERS (Username, Password, Type) VALUES ($1,$2,$3)',[uname, psw, type])
 
                 res.send({
                     response: "hello world"
