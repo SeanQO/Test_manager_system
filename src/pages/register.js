@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+
 let state = {
   uname : "",
   psw: "",
@@ -32,9 +33,8 @@ let handleSubmit = async e => {
       body: JSON.stringify(state)
   }
 
-  let r = await fetch ("http://localhost:3000/register",config)
-
-  console.log(r);
+  let r = await fetch ("http://localhost:3000/api/student/save",config)
+  console.log(r)
 }
 
 export default function Register() {
